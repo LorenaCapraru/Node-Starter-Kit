@@ -111,3 +111,11 @@ app.post("/albums", function (request, response) {
   albumsData.push(newAlbum);
   response.status(200).send(newAlbum);
 });
+
+app.get("/albums/:id", function (request, response) {
+  const album = albumsData.find(
+    (album) => album.albumId === (request.params.id)
+  );
+  response.send(album);
+});
+
