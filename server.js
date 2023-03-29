@@ -113,9 +113,18 @@ app.post("/albums", function (request, response) {
 });
 
 app.get("/albums/:id", function (request, response) {
-  const album = albumsData.find(
-    (album) => album.albumId === (request.params.id)
-  );
+  const album = albumsData.find((album) => album.albumId === request.params.id);
   response.send(album);
 });
 
+app.delete("/albums/:id", function (request, response) {
+  const albumDeleted = albumsData.find(
+    (album) => album.albumId === request.params.id
+  );
+  albumsData.splice(albumsData.indexOf(albumDeleted), 1);
+  response.send(albumDeleted);
+});
+
+app.put('albums/:id', (request, response)=>{
+  
+})
