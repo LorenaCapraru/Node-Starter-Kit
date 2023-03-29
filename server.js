@@ -125,6 +125,16 @@ app.delete("/albums/:id", function (request, response) {
   response.send(albumDeleted);
 });
 
-app.put('albums/:id', (request, response)=>{
-  
-})
+app.put("/albums/:id", (request, response) => {
+  // const album = albumsData.find((el) => el.albumId === request.params.id);
+  // album = request.body;
+
+  // response.send(
+  //   albumsData.replace(
+  //     albumsData.find((album) => album.albumId === request.params.id),
+  //     request.body
+  //   )
+  // );
+  const albumId = albumsData.find((el) => el.albumId === request.params.id);
+  response.send(albumsData.splice(albumsData.indexOf(albumId), 1, request.body));
+});
